@@ -1,4 +1,5 @@
 compile.bat
 test.bat
+import.bat
 compile_flags.txt
 bin\

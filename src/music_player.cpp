@@ -10,10 +10,16 @@ void play_sounds(const std::vector<std::string> &play_list) {
     for (const std::string &song : play_list) {
         std::cout << "Reproduciendo: " << song << '\n';
         std::string mci_command =
-            "open \"" + song + "\" type mpegvideo alias mp3";
+            "open \"" + song + "\" type mpegvideo alias psg_song";
 
-        mciSendString(mci_command.c_str(), nullptr, 0, nullptr);
-        mciSendString("play mp3 wait", nullptr, 0, nullptr);
+        MCIERROR error =
+            mciSendString(mci_command.c_str(), nullptr, 0, nullptr);
+        if (!error) {
+            mciSendString("play psg_song wait", nullptr, 0, nullptr);
+            mciSendString("close psg_song", nullptr, 0, nullptr);
+        } else {
+            throw std::exception("Error al reproducir cancion\n");
+        }
     }
 #else
 
