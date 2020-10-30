@@ -6,3 +6,12 @@ mp3 que se encuentren en el mismo.
 
 De momento solo soporta Windows. Ya algun dia cuando tenga ganas le metere una
 interfaz asi chilera a lo cmus, pero de momento solo queria hacer esto.
+
+Compilacion
+===========
+
+Puede compilarlo con el sigiente comando:
+~~~
+
+clang -Wall -Werror -std=c++17 src/main.cpp src/music_player.cpp src/directory_reader.cpp -o bin/player.exe
+~~~
