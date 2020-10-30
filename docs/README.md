@@ -15,3 +15,9 @@ Puede compilarlo con el sigiente comando:
 
 clang -Wall -Werror -std=c++17 src/main.cpp src/music_player.cpp src/directory_reader.cpp -o bin/player.exe
 ~~~
+
+Limitaciones
+============
+
+Si no se puede colocar el nombre usando caracteres unicode se va a lanzar una
+excepcion y no se van a añadir las demas canciones.

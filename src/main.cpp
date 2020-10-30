@@ -31,13 +31,17 @@ int main(int argc, char *argv[]) {
     } else {
         path = parce_cmd_args(argc, argv);
     }
-    std::vector<std::string> songs = get_song_names(path);
-    std::cout << "Mezclando las canciones ... \n";
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(songs.begin(), songs.end(), g);
-    std::cout << "Iniciando reproduccion\n";
-    play_sounds(songs);
+    try {
+        std::vector<std::string> songs = get_song_names(path);
+        std::cout << "Mezclando las canciones ... \n";
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(songs.begin(), songs.end(), g);
+        std::cout << "Iniciando reproduccion\n";
+        play_sounds(songs);
+    } catch (const std::exception &e) {
+        std::cout << e.what() << '\n';
+    }
     return 0;
 }
 
